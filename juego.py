@@ -47,7 +47,7 @@ class ViboritaInteligente:
         
         # init game state - resetear el juego.
 
-        def reset(self):
+    def reset(self):
 		
         self.direction = Direccion.RIGHT
         
