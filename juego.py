@@ -75,7 +75,7 @@ class ViboritaInteligente:
             # Funcion jugar a un pasp.
         
     def play_step(self,action):
-	self.frame_iteration += 1
+	self.frame_iteration+=1
         # 1. collect user input
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
