@@ -6,6 +6,7 @@ import pygame
 import random
 from enum import Enum
 from collections import namedtuple
+import numpy as np
 
 pygame.init()
 font = pygame.font.Font('arial.ttf', 25)
@@ -18,7 +19,7 @@ class Direccion(Enum):
 
 # Coordenadas ( x , y ) -> Punto.
     
-Punto = namedtuple('Point', 'x, y')
+Punto = namedtuple('Punto', 'x, y')
 
 # Colores -  rgb. 
 WHITE = (255, 255, 255)
@@ -178,13 +179,13 @@ class ViboritaInteligente:
 	x = self.head.x
 	y = self.head.y
 
-	if direction == Direction.RIGHT:
+	if direction == Direccion.RIGHT:
             x += BLOCK_SIZE
-        elif direction == Direction.LEFT:
+        elif direction == Direccion.LEFT:
             x -= BLOCK_SIZE
-        elif direction == Direction.DOWN:
+        elif direction == Direccion.DOWN:
             y += BLOCK_SIZE
-        elif direction == Direction.UP:
+        elif direction == Direccion.UP:
             y -= BLOCK_SIZE
             
         self.head = Punto(x, y)
