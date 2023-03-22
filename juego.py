@@ -24,12 +24,12 @@ Punto = namedtuple('Punto', 'x, y')
 # Colores -  rgb. 
 WHITE = (255, 255, 255)
 RED = (200,0,0)
-BLUE1 = (0, 0, 255)
-BLUE2 = (0, 100, 255)
+BLUE1 = (0, 255, 0)
+BLUE2 = (0, 225, 200)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
-SPEED = 20
+SPEED = 40
 
 # Construimos nuestra clases V-IA.
 
@@ -44,6 +44,7 @@ class ViboritaInteligente:
         self.display = pygame.display.set_mode((self.w, self.h))
         pygame.display.set_caption('Viborita Inteligente.')
         self.clock = pygame.time.Clock()
+	self.reset()
         
         # init game state - resetear el juego.
 
@@ -75,21 +76,12 @@ class ViboritaInteligente:
             # Funcion jugar a un pasp.
         
     def play_step(self,action):
-	   self.frame_iteration+=1
+	self.frame_iteration += 1
         # 1. collect user input
-          for event in pygame.event.get():
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    self.direction = Direction.LEFT
-                elif event.key == pygame.K_RIGHT:
-                    self.direction = Direction.RIGHT
-                elif event.key == pygame.K_UP:
-                    self.direction = Direction.UP
-                elif event.key == pygame.K_DOWN:
-                    self.direction = Direction.DOWN
+                quit(
         
         # 2. movimiento.
         self._move(action) # update the head
@@ -115,14 +107,13 @@ class ViboritaInteligente:
 
             # Penalizar.
         if self.frame_iteration > 20:
-
-		self.reward -= int(0.001*self.frame_iteration)
+           self.reward -= int(0.001*self.frame_iteration)
       
         # 5. update ui and clock
         self._update_ui()
         self.clock.tick(SPEED)
         # 6. Perdiste, regresa el juego y record a 0.
-        return game_over, self.score
+        return self.reward,game_over, self.score
 
 # Funcion importantisima - Colisiones
     
