@@ -7,6 +7,7 @@ from collections import deque
 from game import SnakeGameAI, Direccion, Punto
 from model import Linear_QNet, QTrainer
 from helper import plot
+from grafica import graficar
 
 # Linea importante en el codigo.
 MAX_MEMORIA = 100_000
