@@ -118,13 +118,13 @@ class Agente:
  # Introducimos la funcion analoga - memoria a corto plazo.
  # Entrenamiento.
 
-    def entrenar_memoria_corta(self, state, action, reward, next_state, done):
+   def entrenar_memoria_corta(self, state, action, reward, next_state, done):
         self.trainer.train_step(state, action, reward, next_state, done)
 
 # Funcion super importante. Se deciden acciones.
 # Con enfoque probabilistico ?
 
-    def ob_accion(self, state):
+   def ob_accion(self, state):
         # Movimientos al azar ( exploracion - explotacion ).
         self.epsilon = 80 - self.n_games
         # Movimiento final.
